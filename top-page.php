@@ -36,22 +36,12 @@
         </div>
       </div>
     </section>
-
-
-
-
-
+    
     <main>
       <div class="main-top">
-
       </div>
     </main>
-
-
-
-
-
-
+    
     <div class="footer-contents">
       <div class="logout">
         <a href="logout.php" class="btn btn-malformation">LOGOUT</a>
