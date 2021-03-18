@@ -15,7 +15,6 @@ if(
 $email  = $_POST["password"];
 $password  = $_POST["password"];
 
-
 //OB接続します(mysqlを他のデータベースに変えることも可能)
 try {
   $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','root');
@@ -44,16 +43,5 @@ if (!isset($row['email'])) {
     header("Location: already.html");
     exit;
 }
-
-if($status==false){
-//SQL実行時にエラーがある場合（エラーオブジェクト取得して表示）
-    $error = $stmt->errorInfo();
-    exit("QueryError:".$error[2]);
-
-  }else{
-//main-signupへリダイレクト
-    header("Location: already.html");
-    exit;
-  }
 
   ?>
