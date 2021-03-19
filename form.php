@@ -21,26 +21,12 @@ try {
     exit('DbConnectError:'.$e->getMessage());
   }
 
-//gs_an_tableのデータにあるemailか確認
-$stmt = $pdo->prepare("SELECT * from gs_an_table where email = ?");
-$stmt->execute([$email]);
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt = $pdo -> prepare("INSERT INTO form_table(id, email, message, indate)
+VALUES(NULL, :a1, :a2, sysdate())");
 
-//emailがあった場合
-if (isset($row['email'])) {
-    //データ登録SQLの作成(POSTデータ取得で取得したデータをSQLに入れる)
-
-      $stmt = $pdo -> prepare("INSERT INTO form_table(id, email, message, indate)
-      VALUES(NULL, :a1, :a2, sysdate())");
-
-      $stmt->bindParam(':a1', $email, PDO::PARAM_STR); //数値の場合は PARAM_INT
-      $stmt->bindParam(':a2', $message, PDO::PARAM_STR);
-      header("Location: top-page.php");
-      exit;
-}else{
-    //アドレスがなかった場合
-      echo "メールアドレスが間違っています";
-      exit;
-}
+$stmt->bindParam(':a1', $email, PDO::PARAM_STR); //数値の場合は PARAM_INT
+$stmt->bindParam(':a2', $message, PDO::PARAM_STR);
+header("Location: top-page.php");
+exit;
 
 ?>
