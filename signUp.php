@@ -12,8 +12,9 @@ if(
 }
 
 //POSTデータの取得
-$email  = $_POST["password"];
+$email  = $_POST["email"];
 $password  = $_POST["password"];
+
 
 //OB接続します(mysqlを他のデータベースに変えることも可能)
 try {
